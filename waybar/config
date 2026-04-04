@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 35,
     "spacing": 4,
 
     "modules-left": ["sway/workspaces", "network", "battery"],
