@@ -1,0 +1,32 @@
+window {
+    margin: 110px;
+    border: none;
+    background-color: #000000; /* Nero assoluto come nello screenshot */
+    font-family: "JetBrains Mono";
+    font-size: 20px;
+}
+
+#input {
+    margin: 20px;
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    caret-color: #ffffff; /* Il cursore che vedi dopo 'run:' */
+}
+
+#entry {
+    padding: 10px;
+    border: none;
+}
+
+#entry:selected {
+    background-color: transparent;
+}
+
+#text {
+    color: #ffffff;
+}
+
+#text:selected {
+    color: #ff0000; /* Il colore rosso per l'elemento selezionato, come Gammastep */
+}
