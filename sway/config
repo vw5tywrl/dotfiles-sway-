@@ -54,6 +54,7 @@ input type:touchpad {
 	tap enabled
 	natural_scroll disabled
 	dwt enabled
+	drag_lock disabled
 }
 
 
