@@ -55,6 +55,7 @@ input type:touchpad {
 	natural_scroll disabled
 	dwt enabled
 	pointer_accel "0.5"
+	drag_lock disabled
 }
 
 
