@@ -7,6 +7,7 @@
     "modules-left": ["sway/workspaces", "network", "battery"],
     "modules-center":  ["clock", "sway/language","keyboard-state"],
     "modules-right": [
+	"backlight",
 	"pulseaudio",
         "cpu",
 	"memory", 
@@ -19,6 +20,12 @@
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}"
+    },
+
+    "backlight": {
+	"device": "intel_backlight",
+	"format": "[{percent}%]",
+	"tooltip-format": "Brightness"
     },
 
     "keyboard-state": {

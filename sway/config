@@ -209,9 +209,6 @@ bindsym $mod+r mode "resize"
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
-
 #
 # Status Bar:
 #
@@ -236,11 +233,18 @@ input * {
 	xkb_layout "us,it"
 	xkb_options "grp:win_space_toggle"
 }
-#schermo % zoom
-output LVDS-1 scale 1.00
-#screenshot
-bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/Immagini/screenshot.png
-#rimozione window titlemanager
+# Screenshot area selezionata, salva in Screenshots e copia negli appunti
+bindsym Print exec grim -g "$(slurp)" "$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png" && wl-copy < "$HOME/Pictures/Screenshots/$(ls -t $HOME/Pictures/Screenshots/ | head -n1)"
+# Screenshot di un'area selezionata in una cartella specifica
 default_border pixel 2
 default_floating_border normal
 smart_borders on
+
+# Volume: Muto, Abbassa, Alza
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Luminosità (già che ci sei, per i tasti F5/F6)
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
