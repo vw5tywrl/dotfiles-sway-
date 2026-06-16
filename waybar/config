@@ -4,15 +4,9 @@
     "height": 30,
     "spacing": 4,
 
-    "modules-left": ["sway/workspaces", "network", "battery"],
+    "modules-left": ["sway/workspaces", "network", "custom/battery", "pulseaudio"],
     "modules-center":  ["clock", "sway/language","keyboard-state"],
-    "modules-right": [
-	"pulseaudio",
-        "cpu",
-	"memory", 
-        "temperature", 
-	"tray",
-    ],
+    "modules-right": ["backlight", "cpu", "memory", "temperature", "tray"],
 
     // Configurazione dei singoli moduli
     "sway/workspaces": {
@@ -38,7 +32,7 @@
         "format-disconnected": "WIFI: Off",
         "tooltip-format": "{ifname} via {gwaddr}",
         "max-length": 20,
-	"on-click": "nm-connection-editor"
+	"on-click": "alacritty -e nmtui"
     },
 
     "cpu": {
@@ -48,8 +42,6 @@
     },
 
     "temperature": {
-        "thermal-zone": 2,
-        "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
         "critical-threshold": 80,
         "format": "[TEMP {temperatureC}°C]",
         "tooltip": false
@@ -61,14 +53,19 @@
         "tooltip-format": "Totale: {total:0.1f}GiB\nUsata: {used:0.1f}GiB"
     },
 
-    "battery": {
+    "custom/battery": {
+        "exec": "~/.config/waybar/battery_custom.sh",
+        "return-type": "json",
         "interval": 2,
-        "states": { "warning": 30, "critical": 15 },
-        "format": "[BAT {capacity}% ({power:0.1f}W)]",
-        "format-charging": "[AC {capacity}% (+{power:0.1f}W)]",
-        "format-plugged": "[AC {capacity}% (+{power:0.1f}W)]",
-        "tooltip": true   
-     },
+        "on-click": "~/.config/waybar/cycle_power.sh",
+        "signal": 8
+    },
+
+    "backlight": {
+        "format": "[{percent}%]",
+	"tooltip-format": "Brightness",
+        "tooltip": true
+    },
 
      "sway/language": {
 	"format": "[{}]",
@@ -90,6 +87,7 @@
     "pulseaudio": {
 	"format": "[{volume}%]",
 	"format-muted": "[MUTED]",
-	"on-click": "pavucontrol"
+	"on-click": "pavucontrol",
+	"tooltip-format": "Audio",
     }   
 }
